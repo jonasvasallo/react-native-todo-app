@@ -2,6 +2,7 @@ import { View, Text } from 'react-native'
 import React, { useEffect } from 'react'
 import { SplashScreen, Stack } from 'expo-router'
 import { useFonts } from 'expo-font';
+import { Provider } from 'jotai';
 
 const _layout = () => {
 
@@ -30,9 +31,11 @@ const _layout = () => {
   }
   
   return (
-    <Stack>
-      <Stack.Screen name='index' options={{headerShown: false}} />
-    </Stack>
+    <Provider>
+      <Stack>
+        <Stack.Screen name='index' options={{headerShown: false}} />
+      </Stack>
+    </Provider>
   )
 }
 
