@@ -20,15 +20,15 @@ const EditModal = ({closeModal} : {closeModal: ()=>void}) => {
   }
 
     const [title, setTitle] = useState(selectedTask.title)
-
-    const updateTitle = (text: string) => {
-        setSelectedTask({ ...selectedTask, title: text });
-      };
     
-      const saveTask = () => {
+    const saveTask = () => {
+        
         setTodoList((prev) =>
-          prev.map((t) => (t.id === selectedTask.id ? { ...selectedTask } : t))
+          prev.map((t) => 
+            t.id === selectedTask.id ? { ...t, title: title } : t
+          )
         );
+      
         closeModal();
       };
     
@@ -38,7 +38,7 @@ const EditModal = ({closeModal} : {closeModal: ()=>void}) => {
       };
   return (
     <View>
-      <FormField title='Task Title' value={title} placeholder='Enter task title here' handleChangeText={(text) => setTitle(text)}/>
+      <FormField title='Task Title' value={title} placeholder='Enter task title here' handleChangeText={(newText) => setTitle(newText)}/>
         <View className='flex-row'>
             <CustomButton label='Save' handlePress={saveTask} />
             <CustomButton label='Delete' handlePress={deleteTask} otherStyles='ml-2 bg-red-500'/>
