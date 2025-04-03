@@ -7,9 +7,10 @@ type TextFieldProps = {
     placeholder: string,
     handleChangeText: (newText: string)=>void,
     otherStyles?: string,
+    maxLength?: number,
 }
 
-const FormField = ({title, value, placeholder, handleChangeText, otherStyles, ...props} : TextFieldProps) => {
+const FormField = ({title, value, placeholder, handleChangeText, otherStyles, maxLength, ...props} : TextFieldProps) => {
 
   return (
     <View className={`space-y-1 ${otherStyles} my-2`}>
@@ -22,6 +23,7 @@ const FormField = ({title, value, placeholder, handleChangeText, otherStyles, ..
         placeholder={placeholder}
         placeholderTextColor="#7b7b8b"
         onChangeText={handleChangeText}
+        maxLength={maxLength ?? 999}
         ></TextInput>
       </View>
     </View>

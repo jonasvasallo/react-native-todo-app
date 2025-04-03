@@ -38,7 +38,7 @@ const EditModal = ({closeModal} : {closeModal: ()=>void}) => {
       };
   return (
     <View>
-      <FormField title='Task Title' value={title} placeholder='Enter task title here' handleChangeText={(newText) => setTitle(newText)}/>
+      <FormField title='Task Title' value={title} placeholder='Enter task title here' handleChangeText={(newText) => setTitle(newText)} maxLength={100}/>
         <View className='flex-row'>
             <CustomButton label='Save' handlePress={saveTask} />
             <CustomButton label='Delete' handlePress={deleteTask} otherStyles='ml-2 bg-red-500'/>

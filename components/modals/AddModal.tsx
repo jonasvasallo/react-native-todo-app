@@ -20,7 +20,7 @@ const AddModal = ({closeModal} : {closeModal: ()=>void}) => {
     }
   return (
     <View>
-        <FormField title='Task Title' value={title} placeholder='Enter task title here' handleChangeText={(text) => setTitle(text)}/>
+        <FormField title='Task Title' value={title} placeholder='Enter task title here' handleChangeText={(text) => setTitle(text)} maxLength={100}/>
         <CustomButton label='Save' handlePress={addTask} otherStyles='justify-center items-center'/>
     </View>
   )
