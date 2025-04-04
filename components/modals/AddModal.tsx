@@ -11,8 +11,13 @@ const AddModal = ({closeModal} : {closeModal: ()=>void}) => {
     const [todoList, setToDoList] = useAtom(todoListAtom);
 
     const addTask = () => {
+      // Removal of leading or trailing white spaces and also a validation if the title is not empty to avoid tasks with empty name
         if (title.trim()) {
+
+            // Creating new task object with type of Task defined in index page
             const newTask: Task = { id: Date.now(), title: title, date: new Date().toLocaleString(),isDone: false };
+
+            // Setting new list by getting previous state array and expanding it out into new array and adding the new task
             setToDoList((prev) => [...prev, newTask]);
             setTitle('');
             closeModal();

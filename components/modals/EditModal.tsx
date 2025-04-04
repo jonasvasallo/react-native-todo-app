@@ -23,17 +23,30 @@ const EditModal = ({closeModal} : {closeModal: ()=>void}) => {
     
     const saveTask = () => {
         
-        setTodoList((prev) =>
-          prev.map((t) => 
-            t.id === selectedTask.id ? { ...t, title: title } : t
-          )
+      /* 
+
+      Saving task by going through previous to do list state
+      - Go through each task in previous todo list
+      - If this task matches the selected task id, copy all properties and update the title property with new one
+      - If not, return the same unmodified task
+      
+      */
+        setTodoList(
+          (prev) =>
+            prev.map((task) => 
+              (task.id === selectedTask.id) ? { ...task, title: title } : task
+            )
         );
       
         closeModal();
       };
     
       const deleteTask = () => {
-        setTodoList((prev) => prev.filter((t) => t.id !== selectedTask.id));
+
+        /* 
+        Deleting a task by setting the to do list with a new array without the selected task using array filter function
+        */
+        setTodoList((prev) => prev.filter((task) => task.id !== selectedTask.id));
         closeModal();
       };
   return (
